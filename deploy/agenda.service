@@ -1,0 +1,15 @@
+[Unit]
+Description=DigitalAgenda bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=agenda
+WorkingDirectory=/opt/agenda/app
+EnvironmentFile=/opt/agenda/app/.env
+ExecStart=/opt/agenda/app/.venv/bin/python -m agenda
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
